@@ -1,7 +1,8 @@
 // swift-tools-version: 6.0
-// ⚠️ 本文件的 url 与 checksum 两行由 scripts/release.sh 自动替换。
-//    格式必须保持 `url: "..."` 和 `checksum: "..."` 各占一行、双引号，
-//    改成多行拼接或换引号会导致 sed 替换失败（脚本有 grep 复验，会中止而非发坏包）。
+// ⚠️ 下方 binaryTarget 里的 url 与 checksum 两行由 scripts/release.sh 自动替换。
+//    两者必须各占一行、值用双引号包裹、且缩进对齐；
+//    改成多行拼接或换单引号会导致替换失败
+//    （脚本有 grep 复验，会中止而非发出坏包）。
 
 import PackageDescription
 
