@@ -1,4 +1,4 @@
-# iOS 如何调用 gemstone-swift
+# iOS 集成指南
 
 > 面向：不使用 gem 官方 iOS 代码，从空工程接入 `gemstone-swift` 的 iOS 开发者
 > 目标：跑通「创建以太坊钱包 → 查余额 → 发交易」

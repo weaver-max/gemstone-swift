@@ -20,7 +20,7 @@ Gem Wallet Rust core（`gemstone`）的 Swift 绑定分发包。
 - [故障排查](#故障排查)
 - [给维护者](#给维护者)
 
-> 📖 **完整集成指南见 [ios如何调用这个库.md](ios如何调用这个库.md)** —— 含许可证边界、
+> 📖 **完整集成指南见 [iOS-Integration-Guide.md](iOS-Integration-Guide.md)** —— 含许可证边界、
 > `AlienProvider` / `GemPreferences` 两个必需实现的完整代码、Keychain 密码管理、
 > 发交易全流程、API 参考、落地检查清单。
 >
@@ -132,7 +132,7 @@ defer { passwordBytes.resetBytes(in: 0..<passwordBytes.count) }
 
 > 🔴 **需要先实现 `AlienProvider`（网络）和 `GemPreferences`（键值存储）两个协议**，
 > Rust 侧不做 HTTP，由平台注入。**不实现这两个，gemstone 跑不起来。**
-> 完整可用代码见 [ios如何调用这个库.md §5](ios如何调用这个库.md#5-四个核心文件)。
+> 完整可用代码见 [iOS-Integration-Guide.md §5](iOS-Integration-Guide.md#5-四个核心文件)。
 
 ```swift
 let gateway = GemGateway(
