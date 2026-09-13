@@ -31,7 +31,7 @@ let package = Package(
         // C 层 + 静态库：由 XCFramework 提供，不在本仓库源码中
         .binaryTarget(
             name: "GemstoneFFI",
-            url: "https://github.com/YOUR-ORG/gemstone-swift/releases/download/0.0.0/GemstoneFFI.xcframework.zip",
+            url: "https://github.com/weaver-max/gemstone-swift/releases/download/0.0.0/GemstoneFFI.xcframework.zip",
             checksum: "0000000000000000000000000000000000000000000000000000000000000000"
         ),
     ]

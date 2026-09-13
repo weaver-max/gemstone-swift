@@ -4,7 +4,7 @@ Gem Wallet Rust core（`gemstone`）的 Swift 绑定分发包。
 
 > ⚠️ **本仓库内容由发布脚本自动生成，除 `Package.swift` 结构与本文件外不要手动修改。**
 >
-> - Rust 源码在 [YOUR-ORG/core](https://github.com/YOUR-ORG/core)
+> - Rust 源码在 [weaver-max/core](https://github.com/weaver-max/core)
 > - 发布流程见 core 仓库的 `脚本发布教程.md`
 > - 要改 Swift 侧行为，请改 Rust 源码后重新发版，**不要直接改 `Sources/Gemstone/Gemstone.swift`**（下次发版会被覆盖）
 
@@ -36,7 +36,7 @@ Gem Wallet Rust core（`gemstone`）的 Swift 绑定分发包。
 
 ```
 File → Add Package Dependencies…
-  仓库地址：https://github.com/YOUR-ORG/gemstone-swift
+  仓库地址：https://github.com/weaver-max/gemstone-swift
   Dependency Rule：Up to Next Major Version → 2.114.10
 ```
 
@@ -44,7 +44,7 @@ File → Add Package Dependencies…
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/YOUR-ORG/gemstone-swift", from: "2.114.10")
+    .package(url: "https://github.com/weaver-max/gemstone-swift", from: "2.114.10")
 ],
 targets: [
     .target(
