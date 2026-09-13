@@ -1,0 +1,7 @@
+# 占位文件
+#
+# Gemstone.swift 由 core 仓库的 scripts/release.sh 在每次发版时生成并覆盖：
+#   cp core/gemstone/generated/swift/gemstone.swift Sources/Gemstone/Gemstone.swift
+#
+# git 不跟踪空目录，此文件仅用于让目录结构进入版本库。
+# 首次发版后可以删除，也可以留着。
