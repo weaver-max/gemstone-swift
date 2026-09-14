@@ -208,6 +208,7 @@ Release 2.114.10 (core@820c4155)
 | 症状 | 原因 | 解法 |
 |---|---|---|
 | SPM 报 **404 / 下载失败** | 本仓库不是 public。`binaryTarget` 下载**不带鉴权头** | 见[给维护者](#本仓库必须保持-public) |
+| SPM 报 **`malformedResponse("unexpected tree entry ...")`** | 仓库里混入了**非 ASCII 文件名**。git 对其做八进制转义并加引号，SPM 的 git tree 解析器处理不了 | 维护者需把文件名改成 ASCII。排查：`git ls-tree -r HEAD \| grep '"'` |
 | SPM 报 **checksum mismatch** | Release 的 zip 被重新上传过，但 `Package.swift` 未同步 | 让维护者重新发一个版本 |
 | 拉到的是**旧版本的绑定** | tag 指向的 commit 里 `Package.swift` 还是旧 URL | 同上；core 仓库的 `verify-release.sh` 会检出此问题 |
 | 启动即崩，提示 **checksum / contract version** | 绑定与原生库版本错位（通常是有人手工拷贝过文件） | 清缓存重拉；仍不行则让维护者重发 |
@@ -275,6 +276,34 @@ SPM 的 `.binaryTarget(url:checksum:)` 下载 zip 时**不带任何鉴权头**�
 |---|---|---|
 | B | xcframework 提交进本仓库，改用 `.binaryTarget(path:)` | 仓库每版膨胀几十 MB，需配 Git LFS |
 | C | 改用 CocoaPods + 私有 spec repo | 放弃 SPM |
+
+### 🔴 仓库里不能有非 ASCII 文件名
+
+git 对非 ASCII 文件名会做八进制转义并加引号：
+
+```
+100644 blob 82df2201...	"ios\345\246\202\344\275\225..."
+```
+
+**SPM 的 git tree 解析器处理不了，会让整个包无法被任何下游依赖**：
+
+```
+error: the package at '/' cannot be accessed
+  malformedResponse("unexpected tree entry ...")
+```
+
+2026-09-14 实测踩到过一次（`ios如何调用这个库.md`），已改为 `iOS-Integration-Guide.md`。
+
+**文件内容可以是任何语言，只有文件名必须 ASCII。**
+
+排查：
+
+```bash
+git ls-tree -r HEAD | grep '"'    # 有输出就是有问题
+```
+
+core 仓库的 `verify-release.sh` 已加入真实 `swift package resolve` 检查，
+能在发布验收阶段拦住此类问题。
 
 ### 不要手动打 tag
 
